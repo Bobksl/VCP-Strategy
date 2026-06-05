@@ -176,19 +176,6 @@ Three layers of protection:
 
 ---
 
-## Utility Modules (External)
-
-Located in the same directory as the notebook:
-
-| Module | Purpose |
-|--------|---------|
-| `vcp_signal.py` | `isBuySignal()` function — checks if a single ticker is currently in a valid VCP buy-signal state. Used for live monitoring. Contains `prepare_ohlc`, `compute_atr`, `directional_change`, `detect_all_rising_structures`, `last_buy_signal_from_patterns`. |
-| `vcp_helpers.py` | Watchlist and score breakdown utilities |
-| `vcp_viz.py` | Interactive pattern chart with post-exit-path diagnostics |
-| `vcp_regime.py` | Bull/bear and volatility-regime segmentation |
-
----
-
 ## How to Run
 
 1. Ensure the CRSP CSV exists at the expected path (or update `SNP500_CSV_PATH` in the notebook).
