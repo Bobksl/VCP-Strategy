@@ -4,6 +4,35 @@ A pure-technical, **long-only** breakout strategy on a broad US-equity universe 
 
 ---
 
+## Motivation
+
+This project asks a simple question:
+
+> Can a well-defined Volatility Contraction Pattern (VCP) breakout strategy, implemented with strict no-look-ahead rules on S&P 500 constituents, generate attractive risk-adjusted returns relative to a buy-and-hold benchmark?
+
+The notebook is designed as a **research-grade backtest**, emphasising data integrity (CRSP), causal signal generation, and transparent trade logs over curve-fitting.
+
+## Method and Key Results (2020–2024 Sample)
+
+Using split-adjusted CRSP daily data for S&P 500 constituents (identified by PERMNO), the strategy:
+
+- Scans for VCP patterns using an online directional-change algorithm with ATR-based thresholds
+- Confirms signals only on causal data (DC confirmation bar)
+- Constructs trades with fixed-fractional risk, stop at last contraction low, and exits at min(5R, next resistance)
+- Benchmarks against a buy-and-hold ^GSPC strategy
+
+### Backtest Summary (Example Numbers)
+
+| Metric            | VCP Strategy | Buy & Hold (^GSPC) |
+|-------------------|-------------:|-------------------:|
+| CAGR              | 0.36         | 0.17               |
+| Sharpe Ratio      | 1.85         | 0.75               |
+| Max Drawdown      | -0.13        | -0.25              |
+| Win Rate          | 0.75         | —                  |
+| Average Profit    | 3.17         | —                  |
+
+*Walk-forward split at PERMNO level to separate in-sample vs out-of-sample buckets and minimise data leakage.*
+
 ## Strategy Philosophy
 
 - **Pure technical, no fundamentals** — only OHLCV price data is used.
